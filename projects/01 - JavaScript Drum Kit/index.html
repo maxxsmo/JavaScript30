@@ -62,8 +62,12 @@
 // select element when keyboard key is pressed
 window.addEventListener('keydown', function(e) {
   const el = document.querySelector(`.key[data-key='${e.keyCode}']`);
-  console.log(el);
+  const audio = document.querySelector(`audio[data-key='${e.keyCode}']`).play();
+  el.classList.add('playing');
+  // listen for the end of the transition css property (on .key in style.css) to remove the class
+  el.addEventListener("transitionend", event => el.classList.remove('playing'));
 })
+
 </script>
 
 
